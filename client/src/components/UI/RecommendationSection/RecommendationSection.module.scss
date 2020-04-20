@@ -1,0 +1,18 @@
+.RecommendationSection {
+  width: 100%;
+  border-radius: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: inherit;
+  &_Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.2);
+  }
+}

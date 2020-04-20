@@ -1,0 +1,43 @@
+.PostTweet {
+  display: flex;
+  padding: 1rem 1.5rem;
+
+  &_Img {
+    margin-right: 1rem;
+    img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+    }
+  }
+  &_Inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &_Buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.Responsive {
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.ImgPreview {
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  overflow: hidden;
+  img {
+    height: 100%;
+  }
+}

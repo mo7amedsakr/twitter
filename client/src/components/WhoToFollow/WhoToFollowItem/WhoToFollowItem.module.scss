@@ -1,0 +1,22 @@
+.WhoToFollowItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  &_Img {
+    margin-right: 1rem;
+    img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+    }
+  }
+  &_Names {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &_Button {
+    display: flex;
+    margin-left: auto;
+  }
+}

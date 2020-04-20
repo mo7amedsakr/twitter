@@ -1,0 +1,31 @@
+.PhotoModal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+
+  img {
+    max-width: 100%;
+    z-index: 501;
+  }
+}
+
+.Close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 5000;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  height: 5rem;
+  width: 5rem;
+  transition: background-color 0.1s;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}

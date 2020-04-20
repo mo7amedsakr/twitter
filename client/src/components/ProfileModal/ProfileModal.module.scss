@@ -1,0 +1,50 @@
+.ProfileModal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 7rem;
+  left: -8rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  padding: 1.5rem;
+  z-index: 400;
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
+
+  &_Account {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    &_Profile {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      img {
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  &_Bio {
+    margin-top: 1rem;
+  }
+  &_Info {
+    display: flex;
+    margin-top: 1rem;
+    h4 {
+      display: flex;
+      align-items: center;
+      p {
+        margin-left: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+      }
+    }
+    & > h4:first-child {
+      margin-right: 3rem;
+    }
+  }
+}

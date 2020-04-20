@@ -1,0 +1,23 @@
+.NotificationsItem {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem 1.5rem;
+  position: relative;
+
+  &_Content {
+    display: flex;
+    flex-direction: column;
+    &_Profile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      &_Img {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+  }
+}

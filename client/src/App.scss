@@ -1,0 +1,23 @@
+input,
+button,
+textarea {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  outline: none;
+  font-weight: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input[type='submit'],
+button,
+a,
+label {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

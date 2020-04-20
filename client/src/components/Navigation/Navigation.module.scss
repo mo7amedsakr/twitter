@@ -1,0 +1,67 @@
+.Navigation {
+  position: fixed;
+  height: 100vh;
+  padding-right: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+  z-index: 301;
+  @media only screen and (max-width: 1280px) {
+    padding: 0 1rem;
+  }
+  &_Items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &_MoreBtn {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      padding: 1rem;
+
+      &_Icon {
+        font-size: 1.5em;
+        border-radius: 50%;
+        border: solid 2px currentColor;
+        padding: 1px;
+      }
+      &_Name {
+        margin-left: 2.4rem;
+        @media only screen and (max-width: 1280px) {
+          display: none;
+        }
+      }
+    }
+  }
+  &_TweetBtn {
+    margin-top: 2.5rem;
+
+    @media only screen and (max-width: 1280px) {
+      margin-left: -2px;
+      margin-top: 1.5rem;
+    }
+    &_Btn {
+      @media only screen and (max-width: 1280px) {
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        padding: 1rem !important;
+      }
+      &_Icon {
+        display: none;
+        @media only screen and (max-width: 1280px) {
+          display: block;
+          font-size: 1.5em;
+        }
+      }
+      &_Text {
+        @media only screen and (max-width: 1280px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
