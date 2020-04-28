@@ -1,14 +1,11 @@
-// import axios from '../../axios';
-import axios from 'axios';
+import axios from '../../axios';
 import { put } from 'redux-saga/effects';
 
 import * as actions from '../actions/auth';
 
 export function* authInitSage() {
   try {
-    const res = yield axios.get('http://127.0.0.1:4000/api/v1/users/me', {
-      withCredentials: true,
-    });
+    const res = yield axios.get('/users/me');
     yield put(actions.authUserSuccess(res.data.data));
   } catch (error) {
     yield put(actions.authUserFaild(error.response.data));
@@ -17,12 +14,16 @@ export function* authInitSage() {
 
 export function* authUserSage(action) {
   try {
-    const res = yield axios.post(
-      `http://127.0.0.1:4000/api/v1/users${action.url}`,
-      action.data,
-      { withCredentials: true }
-    );
-    console.log(res.data.data);
+    const res = yield axios.post(`/users${action.url}`, action.data);
+    yield put(actions.authUserSuccess(res.data.data));
+  } catch (error) {
+    yield put(actions.authUserFaild(error.response.data));
+  }
+}
+
+export function* updateUserSage(action) {
+  try {
+    const res = yield axios.post('/users/updateMe', action.data);
     yield put(actions.authUserSuccess(res.data.data));
   } catch (error) {
     yield put(actions.authUserFaild(error.response.data));

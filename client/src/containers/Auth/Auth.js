@@ -5,16 +5,16 @@ import { FaTwitter } from 'react-icons/fa';
 import { Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-export const Auth = (props) => {
-  const SubmitBtn = styled.input`
-    background-color: ${({ theme }) => theme.user_color};
-    padding: 1rem;
-    border-radius: 5rem;
-    &:disabled {
-      opacity: 0.6;
-    }
-  `;
+const SubmitBtn = styled.input`
+  background-color: ${({ theme }) => theme.user_color};
+  padding: 1rem;
+  border-radius: 5rem;
+  &:disabled {
+    opacity: 0.6;
+  }
+`;
 
+export const Auth = (props) => {
   return (
     <Container fixed maxWidth="sm">
       <div className={classes.Auth}>

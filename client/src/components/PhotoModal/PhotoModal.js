@@ -11,7 +11,7 @@ export const PhotoModal = (props) => {
   return (
     <div className={classes.PhotoModal}>
       <Backdrop.WithColor
-        bgcolor={`rgba(${state.color},0.4)`}
+        bgcolor={state.color && `rgba(${state.color},0.4)`}
         onClick={goBack}
       />
       <button className={classes.Close} onClick={goBack}>

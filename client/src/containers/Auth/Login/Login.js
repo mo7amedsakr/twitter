@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { Auth } from '../Auth';
-import { AuthInput } from '../../../components/AuthInput/AuthInput';
+import { Input } from '../../../components/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { authUserStart } from '../../../store/actions/auth';
 import { ErrorMessage } from '../../../components/ErrorMessage/ErrorMessage';
@@ -24,12 +24,8 @@ export const Login = (props) => {
   return (
     <Auth btnLabel="Login" label="Log in to Twitter" submit={onSubmitHandler}>
       {error ? <ErrorMessage>{error.message}</ErrorMessage> : null}
-      <AuthInput
-        type="email"
-        label="Phone, email, or username"
-        ref={emailRef}
-      />
-      <AuthInput type="password" label="Password" ref={passwordRef} />
+      <Input type="email" label="Phone, email, or username" ref={emailRef} />
+      <Input type="password" label="Password" ref={passwordRef} />
     </Auth>
   );
 };

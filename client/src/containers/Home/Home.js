@@ -3,10 +3,9 @@ import classes from './Home.module.scss';
 import { ContainerHeader } from '../../components/UI/ContainerHeader/ContainerHeader';
 import { WiStars } from 'react-icons/wi';
 import PostTweet from '../../components/PostTweet/PostTweet';
+import { Tweets } from '../../components/Tweets/Tweets';
 
-import { Tweets } from './Tweets/Tweets';
-
-const Home = (props) => {
+const Home = () => {
   return (
     <div className={classes.Home}>
       <ContainerHeader name="Home">
@@ -14,7 +13,7 @@ const Home = (props) => {
       </ContainerHeader>
       <PostTweet />
       <div className={classes.BorderBottom}></div>
-      <Tweets />
+      <Tweets url="/tweets" />
     </div>
   );
 };

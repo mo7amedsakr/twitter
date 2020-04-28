@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import classes from './PostTweet.module.scss';
 import { Button } from '../UI/Buttons/Button';
 import { TextArea } from './Textarea/Textarea';
@@ -20,16 +20,19 @@ const PostTweet = (props) => {
     [dispatch]
   );
 
-  if (tweetSent) {
-    textAreaRef.current.value = '';
-    imgRef.current = null;
-  }
+  useEffect(() => {
+    if (tweetSent) {
+      textAreaRef.current.value = '';
+      imgRef.current = null;
+      setImgPreview(null);
+    }
+  }, [tweetSent]);
 
   return (
     <div className={[classes.PostTweet, classes.Responsive].join(' ')}>
       <div className={classes.PostTweet_Img}>
         <img
-          src={`http://127.0.0.1:4000/img/users/${user.photo}`}
+          src={`http://127.0.0.1:4000/img/users/${user.photo.img}`}
           alt="profile"
         />
       </div>

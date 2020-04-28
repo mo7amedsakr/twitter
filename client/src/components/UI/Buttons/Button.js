@@ -1,24 +1,23 @@
 import styled from 'styled-components';
 
+const MainButton = styled.button`
+  border-radius: 10rem;
+  padding: ${({ ptb, plr }) => `${ptb ? ptb : 0.5}rem ${plr ? plr : 1.5}rem`};
+  font-size: ${({ size }) => (size ? `${size}rem` : 'inherit')};
+  font-weight: ${({ weight }) => (weight ? weight : 500)};
+`;
+
 export const Button = {
-  Border: styled.button`
-    font-size: ${({ size }) => (size ? `${size}rem` : 'inherit')};
-    padding: 0.5rem 1.5rem;
-    border-radius: 5rem;
+  Border: styled(MainButton)`
     color: ${({ theme }) => theme.user_color};
     border: 1px solid ${({ theme }) => theme.user_color};
-    font-weight: 600;
     &:hover {
       background-color: ${({ theme }) => theme.user_color_hover};
     }
   `,
-  Full: styled.button`
-    padding: ${({ ptb, plr }) => `${ptb ? ptb : 0}rem ${plr ? plr : 0}rem`};
+  Full: styled(MainButton)`
     background-color: ${({ theme }) => theme.user_color};
-    font-size: ${({ size }) => (size ? size : 1.6)}rem;
-    border-radius: 10rem;
     color: rgb(255, 255, 255);
-    font-weight: ${({ weight }) => (weight ? weight : 500)};
   `,
   Icon: styled.button`
     color: ${({ theme, secondary }) =>

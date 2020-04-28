@@ -13,7 +13,7 @@ import { Notifications } from './containers/Notifications/Notifications';
 import { PostTweetModal } from './components/PostTweet/PostTweetModal/PostTweetModal';
 import { Login } from './containers/Auth/Login/Login';
 import { Signup } from './containers/Auth/Signup/Signup';
-import { Profile } from './components/Profile/Profile';
+import { Profile } from './containers/Profile/Profile';
 import { authInitStart } from './store/actions/auth';
 import { Spinner } from './components/UI/Spinner/Spinner';
 
@@ -79,13 +79,16 @@ const App = () => {
           <Route path="/tweet">
             <PostTweetModal />
           </Route>
-          <Route path="/me">
-            <Profile />
+          <Route path={`/users/${user.username}`}>
+            <Profile.Me />
+          </Route>
+          <Route path={'/users/:username'}>
+            <Profile.User />
           </Route>
           <Route path="/pagenotfound">
             <PageNotFound />
           </Route>
-          <Redirect to="/home" />
+          <Redirect to={`/users/${user.username}`} />
         </Switch>
       </Layout>
     );

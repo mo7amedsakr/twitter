@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { Auth } from '../Auth';
-import { AuthInput } from '../../../components/AuthInput/AuthInput';
+import { Input } from '../../../components/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { authUserStart } from '../../../store/actions/auth';
 import { ErrorMessage } from '../../../components/ErrorMessage/ErrorMessage';
@@ -34,15 +34,11 @@ export const Signup = (props) => {
       submit={onSubmitHandler}
     >
       {error ? <ErrorMessage>{error.message}</ErrorMessage> : null}
-      <AuthInput type="text" label="Name" ref={nameRef} />
-      <AuthInput type="text" label="Username" ref={usernameRef} />
-      <AuthInput
-        type="email"
-        label="Phone, email, or username"
-        ref={emailRef}
-      />
-      <AuthInput type="password" label="Password" ref={passwordRef} />
-      <AuthInput
+      <Input type="text" label="Name" ref={nameRef} />
+      <Input type="text" label="Username" ref={usernameRef} />
+      <Input type="email" label="Phone, email, or username" ref={emailRef} />
+      <Input type="password" label="Password" ref={passwordRef} />
+      <Input
         type="password"
         label="Password confirm"
         ref={passwordConfirmRef}

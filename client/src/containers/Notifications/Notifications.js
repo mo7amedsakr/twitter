@@ -10,7 +10,7 @@ export const Notifications = (props) => {
   return (
     <div className={classes.Notifications}>
       <ContainerHeader name="Notifications">
-        <FiSettings size="1.8em" />
+        <FiSettings size="1.3em" />
       </ContainerHeader>
       <NotificationsItem
         profile={profile}

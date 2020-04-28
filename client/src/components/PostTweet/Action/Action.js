@@ -13,8 +13,8 @@ export const Action = forwardRef((props, ref) => {
         onChange={(e) => {
           ref.current = e.target.files[0];
           const reader = new FileReader();
-          reader.onloadend = () => {
-            props.preview(reader.result);
+          reader.onloadend = (e) => {
+            props.preview(e.target.result);
           };
           reader.readAsDataURL(e.target.files[0]);
           // props.preview(URL.createObjectURL(e.target.files[0]));

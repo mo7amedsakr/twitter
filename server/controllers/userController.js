@@ -23,3 +23,15 @@ exports.getUser = catchAsync(async (req, res, next) => {
 
   res.status(200).json({ status: 'success', data: doc });
 });
+
+exports.updateMe = catchAsync(async (req, res, next) => {
+  const updateDate = {
+    name: req.body.name,
+    username: req.body.username
+  };
+
+  const user = await User.findByIdAndUpdate(req.user._id, updateDate, {
+    runValidators: true,
+    new: true
+  });
+});

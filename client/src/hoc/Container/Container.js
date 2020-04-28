@@ -5,12 +5,10 @@ const ResponsiveContainer = (props) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
-  return matches ? (
-    <Container fixed disableGutters>
+  return (
+    <Container fixed disableGutters={matches}>
       {props.children}
     </Container>
-  ) : (
-    <Container fixed>{props.children}</Container>
   );
 };
 export default ResponsiveContainer;

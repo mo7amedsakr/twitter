@@ -18,6 +18,7 @@ import Li from './NavigationItem/ListItem/ListItem';
 import { Button } from '../UI/Buttons/Button';
 import Modal from './NavigationModal/NavigationModal';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Img = styled.img`
   width: 3.5rem;
@@ -30,6 +31,7 @@ const Img = styled.img`
 `;
 
 const Navigation = () => {
+  const user = useSelector((state) => state.auth.user);
   const [showModal, setShowModal] = useState(false);
 
   const { pathname } = useLocation();
@@ -71,7 +73,11 @@ const Navigation = () => {
         <Item name="Lists" to="/lists" selected={pathname === '/lists'}>
           <FaRegListAlt />
         </Item>
-        <Item name="Profile" to="/me" selected={pathname === '/me'}>
+        <Item
+          name="Profile"
+          to={`/users/${user.username}`}
+          selected={pathname === `/users/${user.username}`}
+        >
           <Img src={profile} alt="profile" selected={pathname === '/profile'} />
         </Item>
         <Li>

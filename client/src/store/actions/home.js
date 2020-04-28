@@ -1,7 +1,7 @@
 import actionTypes from '../actionTypes';
 
-export const fetchTweetsStart = () => {
-  return { type: actionTypes.FETCH_TWEETS_START };
+export const fetchTweetsStart = (url) => {
+  return { type: actionTypes.FETCH_TWEETS_START, url };
 };
 
 export const fetchTweetsSuccess = (tweets) => {

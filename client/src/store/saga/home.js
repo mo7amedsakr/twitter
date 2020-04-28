@@ -2,9 +2,9 @@ import axios from '../../axios';
 import { put } from 'redux-saga/effects';
 import * as actions from '../actions/home';
 
-export function* getTweetsSaga() {
+export function* getTweetsSaga(action) {
   try {
-    const res = yield axios.get('/tweets?page=1&limit=10');
+    const res = yield axios.get(action.url);
     yield put(actions.fetchTweetsSuccess(res.data.data));
   } catch (error) {
     yield put(actions.fetchTweetsFaild(error.response.data));

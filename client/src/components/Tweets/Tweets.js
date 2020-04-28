@@ -1,14 +1,17 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTweetsStart } from '../../../store/actions/home';
-import { Tweet } from '../../../components/Tweet/Tweet';
-import { Spinner } from '../../../components/UI/Spinner/Spinner';
+import { fetchTweetsStart } from '../../store/actions/home';
+import { Tweet } from '../../components/Tweet/Tweet';
+import { Spinner } from '../../components/UI/Spinner/Spinner';
 
-export const Tweets = () => {
+export const Tweets = (props) => {
   const dispatch = useDispatch();
   const tweets = useSelector((state) => state.home.tweets);
   // const error = useSelector((state) => state.home.error);
-  const getTweets = useCallback(() => dispatch(fetchTweetsStart()), [dispatch]);
+  const getTweets = useCallback(() => dispatch(fetchTweetsStart(props.url)), [
+    dispatch,
+    props.url,
+  ]);
 
   useEffect(() => {
     getTweets();

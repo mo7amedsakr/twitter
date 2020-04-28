@@ -14,22 +14,28 @@ export const authUserStart = (url, data) => {
     };
   }
 
-  if (data.passwordConfirm) {
-    if (data.passwordConfirm !== data.password) {
-      return {
-        type: actionTypes.AUTH_USER_FAILD,
-        error: { message: 'Passwords does not match.' },
-      };
-    }
+  if (data.passwordConfirm && data.passwordConfirm !== data.password) {
+    return {
+      type: actionTypes.AUTH_USER_FAILD,
+      error: { message: 'Passwords does not match.' },
+    };
   }
 
   return { type: actionTypes.AUTH_USER_START, url, data };
 };
-
 export const authUserSuccess = (user) => {
   return { type: actionTypes.AUTH_USER_SUCCESS, user };
 };
-
 export const authUserFaild = (error) => {
   return { type: actionTypes.AUTH_USER_FAILD, error };
+};
+
+export const updateUserStart = (data) => {
+  return { type: actionTypes.UPDATE_USER_START, data };
+};
+export const updateUserSuccess = (user) => {
+  return { type: actionTypes.UPDATE_USER_SUCCESS, user };
+};
+export const updateUserFaild = (error) => {
+  return { type: actionTypes.UPDATE_USER_FAILD, error };
 };
