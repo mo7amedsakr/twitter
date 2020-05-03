@@ -1,16 +1,19 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import classes from './ProfileHeader.module.scss';
 import styled from 'styled-components';
 import { TextArea } from '../../components/PostTweet/Textarea/Textarea';
 import { FiCamera } from 'react-icons/fi';
 import { Input, Label as StyledLabel } from '../Input/Input';
 import { Button } from '../UI/Buttons/Button';
+import { useDispatch } from 'react-redux';
+import { updateUserStart } from '../../store/actions/auth';
 
 export const Label = styled.label`
   background-color: ${({ theme }) => theme.user_color};
 `;
 
 export const Editable = (props) => {
+  const dispatch = useDispatch();
   const [coverPreview, setCoverPreview] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const coverRef = useRef(null);
@@ -29,9 +32,31 @@ export const Editable = (props) => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
-  useEffect(() => {
-    console.log('[EDITABLE] RENDER');
-  });
+  const updateUserHandler = useCallback(
+    () =>
+      dispatch(
+        updateUserStart({
+          name:
+            nameRef.current.value !== nameRef.current.defaultValue
+              ? nameRef.current.value
+              : null,
+
+          username:
+            usernameRef.current.value !== usernameRef.current.defaultValue
+              ? usernameRef.current.value
+              : null,
+
+          bio:
+            bioRef.current.value !== bioRef.current.defaultValue
+              ? bioRef.current.value
+              : null,
+
+          photo: photoRef.current,
+          cover: coverRef.current,
+        })
+      ),
+    [dispatch]
+  );
 
   return (
     <>
@@ -88,7 +113,7 @@ export const Editable = (props) => {
           >
             Cancel
           </Button.Border>
-          <Button.Full>Save</Button.Full>
+          <Button.Full onClick={updateUserHandler}>Save</Button.Full>
         </div>
         <Input
           label="Name"

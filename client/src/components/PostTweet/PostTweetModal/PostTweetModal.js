@@ -41,7 +41,12 @@ export const PostTweetModal = (props) => {
   const dispatch = useDispatch();
 
   const sendTweet = useCallback(() => {
-    dispatch(sendTweetStart(textAreaRef.current.value, imgRef.current));
+    dispatch(
+      sendTweetStart({
+        content: textAreaRef.current.value,
+        image: imgRef.current,
+      })
+    );
     goBack();
   }, [dispatch, goBack]);
 

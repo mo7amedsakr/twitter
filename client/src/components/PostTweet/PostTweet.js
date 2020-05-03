@@ -16,7 +16,13 @@ const PostTweet = (props) => {
   const tweetSent = useSelector((state) => state.home.tweetSent);
 
   const sendTweet = useCallback(
-    () => dispatch(sendTweetStart(textAreaRef.current.value, imgRef.current)),
+    () =>
+      dispatch(
+        sendTweetStart({
+          content: textAreaRef.current.value,
+          image: imgRef.current,
+        })
+      ),
     [dispatch]
   );
 

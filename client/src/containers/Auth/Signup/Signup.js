@@ -36,7 +36,7 @@ export const Signup = (props) => {
       {error ? <ErrorMessage>{error.message}</ErrorMessage> : null}
       <Input type="text" label="Name" ref={nameRef} />
       <Input type="text" label="Username" ref={usernameRef} />
-      <Input type="email" label="Phone, email, or username" ref={emailRef} />
+      <Input type="email" label="Email" ref={emailRef} />
       <Input type="password" label="Password" ref={passwordRef} />
       <Input
         type="password"

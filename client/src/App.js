@@ -88,7 +88,7 @@ const App = () => {
           <Route path="/pagenotfound">
             <PageNotFound />
           </Route>
-          <Redirect to={`/users/${user.username}`} />
+          <Redirect to="/home" />
         </Switch>
       </Layout>
     );

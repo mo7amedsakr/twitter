@@ -1,13 +1,27 @@
 const Tweet = require('../models/tweetModel');
+const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getAllTweets = catchAsync(async (req, res, next) => {
+  console.log(req.params);
   const page = +req.query.page || 1;
   const limit = +req.query.limit || 10;
   const skip = (page - 1) * limit;
 
-  const tweets = await Tweet.find()
+  const filter = {};
+
+  if (req.params.username) {
+    const user = await User.findOne({ username: req.params.username });
+
+    if (!user) {
+      return next(new AppError('No document found with that username'));
+    }
+
+    filter.user = user._id;
+  }
+
+  const tweets = await Tweet.find(filter)
     .skip(skip)
     .limit(limit);
 
@@ -37,10 +51,9 @@ exports.createTweet = catchAsync(async (req, res, next) => {
   // );
   if (req.file) {
     req.body.image = req.file.filename;
-    req.body.color = req.file.color.join(',');
-  } else {
-    delete req.body.image;
+    req.body.color = req.file.color;
   }
+
   const tweet = await Tweet.create({
     ...req.body,
     user: req.user._id

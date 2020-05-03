@@ -3,7 +3,7 @@ import actionTypes from '../actionTypes';
 const initState = {
   user: null,
   error: null,
-  isLoading: false,
+  isLoading: true,
 };
 
 const reducer = (state = initState, action) => {

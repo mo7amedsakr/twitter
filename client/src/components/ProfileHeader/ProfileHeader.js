@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './ProfileHeader.module.scss';
 import { Header } from './Header';
 import { Info } from './Info';
@@ -8,8 +8,12 @@ import { useSelector } from 'react-redux';
 
 export const ProfileHeader = {
   Me: () => {
-    const [editable, setEditable] = useState(true);
+    const [editable, setEditable] = useState(false);
     const user = useSelector((state) => state.auth.user);
+    useEffect(() => {
+      setEditable(false);
+    }, [user]);
+
     return (
       <div className={classes.Container}>
         {editable ? (
@@ -42,8 +46,12 @@ export const ProfileHeader = {
   User: (props) => {
     return (
       <div className={classes.Container}>
-        <Header />
-        <Info />
+        <Header cover={props.user.cover} photo={props.user.photo} />
+        <Info
+          name={props.user.name}
+          username={props.user.username}
+          bio={props.user.bio}
+        />
       </div>
     );
   },

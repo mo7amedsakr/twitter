@@ -12,8 +12,8 @@ export const fetchTweetsFaild = (error) => {
   return { type: actionTypes.FETCH_TWEETS_FAILD, error };
 };
 
-export const sendTweetStart = (tweetContent, tweetImage) => {
-  if (tweetContent.trim() === '' && !tweetImage) {
+export const sendTweetStart = (data) => {
+  if (data.content.trim() === '' && !data.image) {
     return {
       type: actionTypes.SEND_TWEET_FAILD,
       error: { message: 'You can not post empty tweet.' },
@@ -21,8 +21,11 @@ export const sendTweetStart = (tweetContent, tweetImage) => {
   }
 
   const tweet = new FormData();
-  tweet.append('content', tweetContent);
-  tweet.append('image', tweetImage);
+  Object.entries(data).forEach(([key, value]) => {
+    if (value) {
+      tweet.append(key, value);
+    }
+  });
 
   return { type: actionTypes.SEND_TWEET_START, tweet };
 };

@@ -34,7 +34,7 @@ const createSendToken = (user, statusCode, req, res) => {
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
-    username: req.body.username,
+    username: req.body.username.toLowerCase().replace(/\s/g, ''),
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm
@@ -74,7 +74,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     token = req.cookies.jwt;
   } else {
     return next(
-      new AppError('You are not logged int! Please log in to get access.', 401)
+      new AppError('You are not logged in! Please log in to get access.', 401)
     );
   }
 

@@ -21,7 +21,7 @@ router.post('/signup', signup);
 router.post('/login', login);
 router.get('/logout', logout);
 
-router.get('/me', protect, getMe, getUser);
+router.get('/me', protect, getMe);
 router.post('/updateMe', protect, uploadUserImages, saveUserImages, updateMe);
 
 router.get('/:username', getUser);

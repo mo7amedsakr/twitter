@@ -31,7 +31,15 @@ export const authUserFaild = (error) => {
 };
 
 export const updateUserStart = (data) => {
-  return { type: actionTypes.UPDATE_USER_START, data };
+  const updatedDate = new FormData();
+
+  Object.entries(data).forEach(([key, value]) => {
+    if (value) {
+      updatedDate.append(key, value);
+    }
+  });
+
+  return { type: actionTypes.UPDATE_USER_START, data: updatedDate };
 };
 export const updateUserSuccess = (user) => {
   return { type: actionTypes.UPDATE_USER_SUCCESS, user };

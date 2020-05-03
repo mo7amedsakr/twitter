@@ -12,7 +12,6 @@ import {
 import { FaRegListAlt, FaTwitter } from 'react-icons/fa';
 import { IoMdAdd } from 'react-icons/io';
 import { useLocation } from 'react-router-dom';
-import profile from '../../assests/jeffrey_000.png';
 import styled from 'styled-components';
 import Li from './NavigationItem/ListItem/ListItem';
 import { Button } from '../UI/Buttons/Button';
@@ -78,7 +77,11 @@ const Navigation = () => {
           to={`/users/${user.username}`}
           selected={pathname === `/users/${user.username}`}
         >
-          <Img src={profile} alt="profile" selected={pathname === '/profile'} />
+          <Img
+            src={`http://127.0.0.1:4000/img/users/${user.photo.img}`}
+            alt="profile"
+            selected={pathname === '/profile'}
+          />
         </Item>
         <Li>
           <button
