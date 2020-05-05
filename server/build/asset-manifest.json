@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c062ab5a.chunk.css",
+    "main.js": "/static/js/main.f1d9690e.chunk.js",
+    "main.js.map": "/static/js/main.f1d9690e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.15770b81.js",
+    "runtime-main.js.map": "/static/js/runtime-main.15770b81.js.map",
+    "static/js/2.1a840acd.chunk.js": "/static/js/2.1a840acd.chunk.js",
+    "static/js/2.1a840acd.chunk.js.map": "/static/js/2.1a840acd.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.8214d9bd056d241e669663ea9c0d66c6.js": "/precache-manifest.8214d9bd056d241e669663ea9c0d66c6.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.c062ab5a.chunk.css.map": "/static/css/main.c062ab5a.chunk.css.map",
+    "static/js/2.1a840acd.chunk.js.LICENSE.txt": "/static/js/2.1a840acd.chunk.js.LICENSE.txt",
+    "static/media/blue.svg": "/static/media/blue.e37c985e.svg",
+    "static/media/green.svg": "/static/media/green.e4b6d272.svg",
+    "static/media/jeffrey_000.png": "/static/media/jeffrey_000.1dad94d1.png",
+    "static/media/orange.svg": "/static/media/orange.67069a13.svg",
+    "static/media/pink.svg": "/static/media/pink.764836c1.svg",
+    "static/media/purple.svg": "/static/media/purple.b881e880.svg",
+    "static/media/yellow.svg": "/static/media/yellow.141d4943.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.15770b81.js",
+    "static/js/2.1a840acd.chunk.js",
+    "static/css/main.c062ab5a.chunk.css",
+    "static/js/main.f1d9690e.chunk.js"
+  ]
+}

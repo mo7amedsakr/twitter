@@ -74,12 +74,12 @@ const Navigation = () => {
         </Item>
         <Item
           name="Profile"
-          to={`/users/${user.username}`}
-          selected={pathname === `/users/${user.username}`}
+          to={`/${user.username}`}
+          selected={pathname === `/${user.username}`}
         >
           <Img
-            src={`http://127.0.0.1:4000/img/users/${user.photo.img}`}
-            alt="profile"
+            src={`/img/users/${user.photo.img}`}
+            alt=""
             selected={pathname === '/profile'}
           />
         </Item>

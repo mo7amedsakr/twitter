@@ -1,10 +1,10 @@
 import { takeEvery, takeLeading } from 'redux-saga/effects';
 import actionTypes from '../actionTypes';
 
-import { getTweetsSaga, sendTweetSaga } from './home';
+import { getTweetsSaga, sendTweetSaga } from './tweets';
 import { authInitSage, authUserSage, updateUserSage } from './auth';
 
-export function* watchHome() {
+export function* watchTweets() {
   yield takeEvery(actionTypes.FETCH_TWEETS_START, getTweetsSaga);
   yield takeLeading(actionTypes.SEND_TWEET_START, sendTweetSaga);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './ProfileModal.module.scss';
 import styled from 'styled-components';
 import { Button } from '../UI/Buttons/Button';
+import { Link } from 'react-router-dom';
 
 const Div = styled.div`
   background-color: ${({ theme }) => theme.background_primary};
@@ -16,12 +17,16 @@ const P = styled.p`
 
 export const ProfileModal = (props) => {
   return (
-    <Div className={classes.ProfileModal}>
+    <Div className={classes.ProfileModal} onMouseLeave={props.close}>
       <div className={classes.ProfileModal_Account}>
         <div className={classes.ProfileModal_Account_Profile}>
-          <img src={props.profile} alt="profile" />
-          <h4>{props.name}</h4>
-          <P>@{props.username}</P>
+          <img src={props.profile} alt="" />
+          <Link to={`/${props.username}`}>
+            <h4>{props.name}</h4>
+          </Link>
+          <Link to={`/${props.username}`}>
+            <P>@{props.username}</P>
+          </Link>
         </div>
         <Button.Border>Follow</Button.Border>
       </div>
@@ -30,10 +35,10 @@ export const ProfileModal = (props) => {
       </div>
       <div className={classes.ProfileModal_Info}>
         <h4>
-          69 <P>Following</P>
+          0 <P>Following</P>
         </h4>
         <h4>
-          69 <P>Followers</P>
+          0 <P>Followers</P>
         </h4>
       </div>
     </Div>

@@ -9,7 +9,7 @@ export const PageNotFound = (props) => {
 
   return (
     <div className={classes.PageNotFound}>
-      <H1>Page not done yet :(</H1>
+      <H1>404 not found.</H1>
     </div>
   );
 };

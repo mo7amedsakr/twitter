@@ -36,6 +36,8 @@ const userSchema = new mongoose.Schema({
 
   bio: String,
 
+  tweets: { type: Number, default: 0 },
+
   password: {
     type: String,
     required: [true, 'A user must have a password'],

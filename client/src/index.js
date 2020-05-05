@@ -8,9 +8,9 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter } from 'react-router-dom';
 import themeReducer from './store/reducers/theme';
-import homeReducer from './store/reducers/home';
+import tweetReducer from './store/reducers/tweets';
 import authReducer from './store/reducers/auth';
-import { watchHome, watchAuth } from './store/saga/index';
+import { watchTweets, watchAuth } from './store/saga/index';
 
 const composeEnhancers =
   (process.env.NODE_ENV === 'development'
@@ -19,7 +19,7 @@ const composeEnhancers =
 
 const rootReducer = combineReducers({
   theme: themeReducer,
-  home: homeReducer,
+  tweets: tweetReducer,
   auth: authReducer,
 });
 
@@ -30,7 +30,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(SagaMiddleware))
 );
 
-SagaMiddleware.run(watchHome);
+SagaMiddleware.run(watchTweets);
 SagaMiddleware.run(watchAuth);
 
 const app = (

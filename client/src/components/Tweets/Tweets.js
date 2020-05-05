@@ -1,22 +1,38 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTweetsStart } from '../../store/actions/home';
+import { fetchTweetsStart } from '../../store/actions/tweets';
 import { Tweet } from '../../components/Tweet/Tweet';
 import { Spinner } from '../../components/UI/Spinner/Spinner';
 
 export const Tweets = (props) => {
   const dispatch = useDispatch();
-  const tweets = useSelector((state) => state.home.tweets);
-  const isLoading = useSelector((state) => state.home.isLoading);
-  // const error = useSelector((state) => state.home.error);
-  const getTweets = useCallback(() => dispatch(fetchTweetsStart(props.url)), [
-    dispatch,
-    props.url,
-  ]);
+  const [page, setPage] = useState(1);
+  const tweets = useSelector((state) => state.tweets.tweets);
+  const getTweets = useCallback(
+    (page) => dispatch(fetchTweetsStart(props.url, page)),
+    [dispatch, props.url]
+  );
 
   useEffect(() => {
-    getTweets();
-  }, [getTweets]);
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  useEffect(() => {
+    getTweets(page);
+  }, [getTweets, page]);
+
+  const scrollHandler = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandler);
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
+  });
 
   return (
     <div>
@@ -24,13 +40,10 @@ export const Tweets = (props) => {
         tweets.map((tweet) => (
           <Tweet
             key={tweet._id}
-            profile={`http://127.0.0.1:4000/img/users/${tweet.user.photo.img}`}
+            profile={`/img/users/${tweet.user.photo.img}`}
             name={tweet.user.name}
             username={tweet.user.username}
-            img={
-              tweet.image &&
-              `http://127.0.0.1:4000/img/tweets/${tweet.image}?size=small`
-            }
+            img={tweet.image && `/img/tweets/${tweet.image}?size=small`}
             color={tweet.color}
           >
             {tweet.content}

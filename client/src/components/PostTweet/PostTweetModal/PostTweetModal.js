@@ -10,7 +10,7 @@ import { FiImage } from 'react-icons/fi';
 import { Button } from '../../UI/Buttons/Button';
 import { TextArea } from '../Textarea/Textarea';
 import { useDispatch } from 'react-redux';
-import { sendTweetStart } from '../../../store/actions/home';
+import { sendTweetStart } from '../../../store/actions/tweets';
 import { Action } from '../Action/Action';
 
 const Div = styled.div`

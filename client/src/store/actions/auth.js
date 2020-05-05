@@ -14,6 +14,13 @@ export const authUserStart = (url, data) => {
     };
   }
 
+  if (data.username && data.username.replace(/\s/g, '') === '') {
+    return {
+      type: actionTypes.AUTH_USER_FAILD,
+      error: { message: 'Username can not be empty.' },
+    };
+  }
+
   if (data.passwordConfirm && data.passwordConfirm !== data.password) {
     return {
       type: actionTypes.AUTH_USER_FAILD,
@@ -31,15 +38,22 @@ export const authUserFaild = (error) => {
 };
 
 export const updateUserStart = (data) => {
-  const updatedDate = new FormData();
+  const updatedData = new FormData();
 
   Object.entries(data).forEach(([key, value]) => {
     if (value) {
-      updatedDate.append(key, value);
+      updatedData.append(key, value);
     }
   });
 
-  return { type: actionTypes.UPDATE_USER_START, data: updatedDate };
+  if (updatedData.values.length <= 0) {
+    return {
+      type: actionTypes.UPDATE_USER_FAILD,
+      error: { message: 'You never changed.' },
+    };
+  }
+
+  return { type: actionTypes.UPDATE_USER_START, data: updatedData };
 };
 export const updateUserSuccess = (user) => {
   return { type: actionTypes.UPDATE_USER_SUCCESS, user };

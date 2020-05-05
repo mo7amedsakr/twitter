@@ -31,7 +31,7 @@ export const TrendsItem = (props) => {
         </Button.Icon>
       </div>
       <H4>#Test</H4>
-      <p>69K Tweets</p>
+      <p>0 Tweets</p>
     </Div>
   );
 };

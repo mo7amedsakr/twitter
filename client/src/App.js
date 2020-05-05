@@ -64,6 +64,12 @@ const App = () => {
     render = (
       <Layout>
         <Switch>
+          <Route path="/login">
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/signup">
+            <Redirect to="/home" />
+          </Route>
           <Route path="/home">
             <Home />
           </Route>
@@ -79,16 +85,15 @@ const App = () => {
           <Route path="/tweet">
             <PostTweetModal />
           </Route>
-          <Route path={`/users/${user.username}`}>
-            <Profile.Me />
-          </Route>
-          <Route path={'/users/:username'}>
-            <Profile.User />
-          </Route>
           <Route path="/pagenotfound">
             <PageNotFound />
           </Route>
-          <Redirect to="/home" />
+          <Route path={`/${user.username}`}>
+            <Profile.Me />
+          </Route>
+          <Route path={'/:username'}>
+            <Profile.User />
+          </Route>
         </Switch>
       </Layout>
     );

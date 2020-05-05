@@ -75,10 +75,7 @@ export const Editable = (props) => {
             <FiCamera />
           </i>
           <img
-            src={
-              coverPreview ||
-              (props.cover && `http://127.0.0.1:4000/img/users/${props.cover}`)
-            }
+            src={coverPreview || (props.cover && `/img/users/${props.cover}`)}
             alt=""
             className={classes.LabelImg}
           />
@@ -97,9 +94,7 @@ export const Editable = (props) => {
             <FiCamera />
           </i>
           <img
-            src={
-              photoPreview || `http://127.0.0.1:4000/img/users/${props.photo}`
-            }
+            src={photoPreview || `/img/users/${props.photo}`}
             alt=""
             className={classes.LabelImg}
           />

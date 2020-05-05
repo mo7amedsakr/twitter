@@ -3,7 +3,7 @@ import classes from './PostTweet.module.scss';
 import { Button } from '../UI/Buttons/Button';
 import { TextArea } from './Textarea/Textarea';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendTweetStart } from '../../store/actions/home';
+import { sendTweetStart } from '../../store/actions/tweets';
 import { Action } from './Action/Action';
 import { FiImage } from 'react-icons/fi';
 
@@ -13,7 +13,7 @@ const PostTweet = (props) => {
   const [imgPreview, setImgPreview] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const tweetSent = useSelector((state) => state.home.tweetSent);
+  const tweetSent = useSelector((state) => state.tweets.tweetSent);
 
   const sendTweet = useCallback(
     () =>
@@ -37,10 +37,7 @@ const PostTweet = (props) => {
   return (
     <div className={[classes.PostTweet, classes.Responsive].join(' ')}>
       <div className={classes.PostTweet_Img}>
-        <img
-          src={`http://127.0.0.1:4000/img/users/${user.photo.img}`}
-          alt="profile"
-        />
+        <img src={`/img/users/${user.photo.img}`} alt="profile" />
       </div>
       <div className={classes.PostTweet_Inputs}>
         <TextArea

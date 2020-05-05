@@ -49,9 +49,8 @@ export const Tweet = (props) => {
       <div className={classes.Tweet_Img}>
         <img
           src={props.profile}
-          alt="profile"
+          alt=""
           onMouseEnter={() => setShowModal(true)}
-          onMouseLeave={() => setShowModal(false)}
         />
       </div>
       <div className={classes.Tweet_Content}>
@@ -103,6 +102,7 @@ export const Tweet = (props) => {
       </div>
       {showModal ? (
         <ProfileModal
+          close={() => setShowModal(false)}
           profile={props.profile}
           name={props.name}
           username={props.username}

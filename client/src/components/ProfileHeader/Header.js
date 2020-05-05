@@ -16,16 +16,13 @@ export const Header = (props) => {
           to={{
             pathname: `/photo/${props.cover.img}`,
             state: {
-              img: `http://127.0.0.1:4000/img/users/${props.cover.img}`,
+              img: `/img/users/${props.cover.img}`,
               color: props.cover.color,
             },
           }}
           className={classes.Header_Cover}
         >
-          <img
-            src={`http://127.0.0.1:4000/img/users/${props.cover.img}`}
-            alt=""
-          />
+          <img src={`/img/users/${props.cover.img}`} alt="" />
         </Link>
       ) : (
         <Label style={{ height: '10rem' }} as="div" />
@@ -34,16 +31,13 @@ export const Header = (props) => {
         to={{
           pathname: `/photo/sakrphoto`,
           state: {
-            img: `http://127.0.0.1:4000/img/users/${props.photo.img}`,
+            img: `/img/users/${props.photo.img}`,
             color: props.photo.color,
           },
         }}
         className={classes.Header_Photo}
       >
-        <img
-          src={`http://127.0.0.1:4000/img/users/${props.photo.img}`}
-          alt=""
-        />
+        <img src={`/img/users/${props.photo.img}`} alt="" />
       </StyledLink>
     </div>
   );

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./userModel');
 
 const tweetSchema = new mongoose.Schema({
   user: {
@@ -12,6 +13,10 @@ const tweetSchema = new mongoose.Schema({
   },
   image: String,
   color: String
+});
+
+tweetSchema.post('save', async function() {
+  await User.findByIdAndUpdate(this.user, { $inc: { tweets: 1 } });
 });
 
 tweetSchema.pre(/^find/, function(next) {
