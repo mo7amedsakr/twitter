@@ -74,9 +74,9 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/tweets', tweetRouter);
 app.use('/img', imageRouter);
 
-// app.all('*', (req, res, next) => {
-//   res.sendFile(`${__dirname}/build/index.html`);
-// });
+app.all('*', (req, res, next) => {
+  res.sendFile(`${__dirname}/build/index.html`);
+});
 
 app.use(globalErrorHandler);
 
