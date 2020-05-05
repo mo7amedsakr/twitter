@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import classes from './NavigationModal.module.scss';
 import { Backdrop } from '../../UI/Backdrop/Backdrop';
 import styled from 'styled-components';
-import profile from '../../../assests/jeffrey_000.png';
 import Item from './NavigationModalItem/NavigationModalItem';
 import { TiFolder } from 'react-icons/ti';
 import { GiElectric } from 'react-icons/gi';
@@ -49,7 +48,7 @@ const NavigationModal = (props) => {
             <div className={classes.Modal_Accounts_Pics}>
               <img
                 className={classes.Modal_Accounts_Pics_Pic}
-                src={`/img/users/${user.username}`}
+                src={`/img/users/${user.photo.img}`}
                 alt=""
               />
             </div>
