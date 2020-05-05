@@ -61,3 +61,15 @@ export const updateUserSuccess = (user) => {
 export const updateUserFaild = (error) => {
   return { type: actionTypes.UPDATE_USER_FAILD, error };
 };
+
+export const logoutStart = () => {
+  return { type: actionTypes.LOGOUT_START };
+};
+
+export const logoutSuccess = () => {
+  return { type: actionTypes.lOGOUT_SUCCESS };
+};
+
+export const logoutFaild = (error) => {
+  return { type: actionTypes.LOGOUT_FAILD, error };
+};

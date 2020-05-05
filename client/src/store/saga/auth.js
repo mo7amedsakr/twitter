@@ -22,11 +22,19 @@ export function* authUserSage(action) {
 }
 
 export function* updateUserSage(action) {
-  console.log(action.data);
   try {
     const res = yield axios.post('/users/updateMe', action.data);
     yield put(actions.authUserSuccess(res.data.data));
   } catch (error) {
     yield put(actions.authUserFaild(error.response.data));
+  }
+}
+
+export function* logoutSage() {
+  try {
+    yield axios.get('/users/logout');
+    yield put(actions.logoutSuccess());
+  } catch (error) {
+    yield put(actions.logoutFaild(error.response.data));
   }
 }

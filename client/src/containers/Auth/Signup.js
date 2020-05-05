@@ -1,9 +1,9 @@
 import React, { useRef, useCallback } from 'react';
-import { Auth } from '../Auth';
-import { Input } from '../../../components/Input/Input';
+import { Auth } from './Auth';
+import { Input } from '../../components/Input/Input';
 import { useDispatch, useSelector } from 'react-redux';
-import { authUserStart } from '../../../store/actions/auth';
-import { ErrorMessage } from '../../../components/ErrorMessage/ErrorMessage';
+import { authUserStart } from '../../store/actions/auth';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 
 export const Signup = (props) => {
   const dispatch = useDispatch();

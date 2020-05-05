@@ -21,6 +21,11 @@ const reducer = (state = initState, action) => {
     case actionTypes.UPDATE_USER_FAILD:
       return { ...state, error: action.error };
 
+    case actionTypes.lOGOUT_SUCCESS:
+      return { ...initState, isLoading: false };
+    case actionTypes.LOGOUT_FAILD:
+      return { ...state, error: action.error };
+
     default:
       return state;
   }

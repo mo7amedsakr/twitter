@@ -11,11 +11,12 @@ import { PhotoModal } from './components/PhotoModal/PhotoModal';
 import Display from './components/Display/Display';
 import { Notifications } from './containers/Notifications/Notifications';
 import { PostTweetModal } from './components/PostTweet/PostTweetModal/PostTweetModal';
-import { Login } from './containers/Auth/Login/Login';
-import { Signup } from './containers/Auth/Signup/Signup';
+import { Login } from './containers/Auth/Login';
+import { Signup } from './containers/Auth/Signup';
 import { Profile } from './containers/Profile/Profile';
 import { authInitStart } from './store/actions/auth';
 import { Spinner } from './components/UI/Spinner/Spinner';
+import { Logout } from './containers/Auth/Logout';
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.background_primary};
@@ -69,6 +70,9 @@ const App = () => {
           </Route>
           <Route path="/signup">
             <Redirect to="/home" />
+          </Route>
+          <Route path="/logout">
+            <Logout />
           </Route>
           <Route path="/home">
             <Home />
