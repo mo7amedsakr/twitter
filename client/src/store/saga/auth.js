@@ -22,6 +22,7 @@ export function* authUserSage(action) {
 }
 
 export function* updateUserSage(action) {
+  console.log(action.data);
   try {
     const res = yield axios.post('/users/updateMe', action.data);
     yield put(actions.authUserSuccess(res.data.data));

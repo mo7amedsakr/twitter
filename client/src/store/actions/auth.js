@@ -46,7 +46,7 @@ export const updateUserStart = (data) => {
     }
   });
 
-  if (updatedData.values.length <= 0) {
+  if (updatedData.entries().next().done) {
     return {
       type: actionTypes.UPDATE_USER_FAILD,
       error: { message: 'You never changed.' },

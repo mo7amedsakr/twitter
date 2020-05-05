@@ -14,6 +14,7 @@ import {
   FiEdit,
 } from 'react-icons/fi';
 import { IoIosPulse } from 'react-icons/io';
+import { useSelector } from 'react-redux';
 
 const Div = styled.div`
   width: 25.5rem;
@@ -37,6 +38,8 @@ const P = styled.p`
 `;
 
 const NavigationModal = (props) => {
+  const user = useSelector((state) => state.auth.user);
+
   return props.show ? (
     <Fragment>
       <Backdrop.Transparent onClick={props.setShow} />
@@ -46,13 +49,13 @@ const NavigationModal = (props) => {
             <div className={classes.Modal_Accounts_Pics}>
               <img
                 className={classes.Modal_Accounts_Pics_Pic}
-                src={profile}
-                alt="your profile"
+                src={`/img/users/${user.username}`}
+                alt=""
               />
             </div>
             <div className={classes.Modal_Accounts_Info}>
-              <H5>Mohamed Sakr</H5>
-              <P>@m07amedsakr</P>
+              <H5>{user.name}</H5>
+              <P>@{user.username}</P>
             </div>
           </div>
         </div>
