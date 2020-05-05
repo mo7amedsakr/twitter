@@ -98,6 +98,7 @@ const App = () => {
           <Route path={'/:username'}>
             <Profile.User />
           </Route>
+          <Redirect to="/home" />
         </Switch>
       </Layout>
     );
