@@ -1,17 +1,17 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import classes from './PostTweetModal.module.scss';
 import PTclasses from '../PostTweet.module.scss';
 import { Backdrop } from '../../UI/Backdrop/Backdrop';
 import styled from 'styled-components';
-import profile from '../../../assests/jeffrey_000.png';
 import { useHistory } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
 import { FiImage } from 'react-icons/fi';
 import { Button } from '../../UI/Buttons/Button';
 import { TextArea } from '../Textarea/Textarea';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { sendTweetStart } from '../../../store/actions/tweets';
 import { Action } from '../Action/Action';
+import { ImagePreview } from '../ImagePreview/ImagePreview';
 
 const Div = styled.div`
   position: fixed;
@@ -34,11 +34,13 @@ const Div = styled.div`
   }
 `;
 
-export const PostTweetModal = (props) => {
+export const PostTweetModal = () => {
+  const dispatch = useDispatch();
   const { goBack } = useHistory();
   const textAreaRef = useRef(null);
   const imgRef = useRef(null);
-  const dispatch = useDispatch();
+  const [imgPreview, setImgPreview] = useState(null);
+  const user = useSelector((state) => state.auth.user);
 
   const sendTweet = useCallback(() => {
     dispatch(
@@ -70,7 +72,7 @@ export const PostTweetModal = (props) => {
         <div className={classes.PostTweetModal_BorderBottom}></div>
         <div className={PTclasses.PostTweet}>
           <div className={PTclasses.PostTweet_Img}>
-            <img src={profile} alt="profile" />
+            <img src={`/img/users/${user.photo.img}`} alt="" />
           </div>
           <div className={PTclasses.PostTweet_Inputs}>
             <TextArea
@@ -84,8 +86,15 @@ export const PostTweetModal = (props) => {
                 }
               }}
             />
+            {imgPreview && <ImagePreview img={imgPreview} />}
             <div className={PTclasses.PostTweet_Inputs_Buttons}>
-              <Action type="file" id="image" ref={imgRef} accept="image/*">
+              <Action
+                type="file"
+                id="image"
+                ref={imgRef}
+                preview={setImgPreview}
+                accept="image/*"
+              >
                 <FiImage size="1.5em" />
               </Action>
               <Button.Full

@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { sendTweetStart } from '../../store/actions/tweets';
 import { Action } from './Action/Action';
 import { FiImage } from 'react-icons/fi';
+import { ImagePreview } from './ImagePreview/ImagePreview';
 
-const PostTweet = (props) => {
+const PostTweet = () => {
+  const dispatch = useDispatch();
   const textAreaRef = useRef('');
   const imgRef = useRef(null);
   const [imgPreview, setImgPreview] = useState(null);
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const tweetSent = useSelector((state) => state.tweets.tweetSent);
 
@@ -37,7 +38,7 @@ const PostTweet = (props) => {
   return (
     <div className={[classes.PostTweet, classes.Responsive].join(' ')}>
       <div className={classes.PostTweet_Img}>
-        <img src={`/img/users/${user.photo.img}`} alt="profile" />
+        <img src={`/img/users/${user.photo.img}`} alt="" />
       </div>
       <div className={classes.PostTweet_Inputs}>
         <TextArea
@@ -51,11 +52,7 @@ const PostTweet = (props) => {
             }
           }}
         />
-        {imgPreview && (
-          <div className={classes.ImgPreview}>
-            <img src={imgPreview} alt="" />
-          </div>
-        )}
+        {imgPreview && <ImagePreview img={imgPreview} />}
         <div className={classes.PostTweet_Inputs_Buttons}>
           <Action
             type="file"
