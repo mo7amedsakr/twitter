@@ -56,10 +56,12 @@ export const Tweet = (props) => {
       <div className={classes.Tweet_Content}>
         <div className={classes.Tweet_Content_Info}>
           <h4>
-            {props.name}{' '}
-            <SpanSecondaryColor style={{ fontWeight: '400' }}>
-              @{props.username}
-            </SpanSecondaryColor>
+            <Link to={`/${props.username}`}>
+              {props.name}{' '}
+              <SpanSecondaryColor style={{ fontWeight: '400' }}>
+                @{props.username}
+              </SpanSecondaryColor>
+            </Link>
           </h4>
           <Button.Icon secondary>
             <IoIosArrowDown />
