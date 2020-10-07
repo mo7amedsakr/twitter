@@ -72,7 +72,7 @@ export const PostTweetModal = () => {
         <div className={classes.PostTweetModal_BorderBottom}></div>
         <div className={PTclasses.PostTweet}>
           <div className={PTclasses.PostTweet_Img}>
-            <img src={`/img/users/${user.photo.img}`} alt="" />
+            <img src={user.photo.img} alt="" />
           </div>
           <div className={PTclasses.PostTweet_Inputs}>
             <TextArea

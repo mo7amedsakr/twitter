@@ -24,8 +24,18 @@ export const Login = (props) => {
   return (
     <Auth btnLabel="Login" label="Log in to Twitter" submit={onSubmitHandler}>
       {error ? <ErrorMessage>{error.message}</ErrorMessage> : null}
-      <Input type="email" label="Email" ref={emailRef} />
-      <Input type="password" label="Password" ref={passwordRef} />
+      <Input
+        type="email"
+        label="Email"
+        ref={emailRef}
+        defaultValue="test@user.com"
+      />
+      <Input
+        type="password"
+        label="Password"
+        ref={passwordRef}
+        defaultValue="testuser1234"
+      />
     </Auth>
   );
 };

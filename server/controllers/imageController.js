@@ -3,12 +3,17 @@ const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
 const colorThief = require('colorthief');
+const cloudinary = require('cloudinary').v2;
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
 const getImgPath = (p) => path.join(path.resolve(), `/data/img/`, p);
 
 const multerStorage = multer.memoryStorage();
+
+const uploadImage = async (path) => {
+  return (await cloudinary.uploader.upload(path)).secure_url;
+};
 
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
@@ -39,9 +44,11 @@ exports.saveUserImages = catchAsync(async (req, res, next) => {
       .jpeg({ quality: 90 })
       .toFile(`data/img/users/${req.body.photo.img}`);
 
-    req.body.photo.color = (
-      await colorThief.getColor(getImgPath(`/users/${req.body.photo.img}`))
-    ).join(',');
+    const imgPath = getImgPath(`/users/${req.body.photo.img}`);
+
+    req.body.photo.color = (await colorThief.getColor(imgPath)).join(',');
+
+    req.body.photo.img = await uploadImage(imgPath);
   }
   if (req.files.cover) {
     req.body.cover = { img: `${req.user.username}-cover-${Date.now()}.jpeg` };
@@ -51,9 +58,10 @@ exports.saveUserImages = catchAsync(async (req, res, next) => {
       .jpeg({ quality: 90 })
       .toFile(`data/img/users/${req.body.cover.img}`);
 
-    req.body.cover.color = (
-      await colorThief.getColor(getImgPath(`/users/${req.body.cover.img}`))
-    ).join(',');
+    const imgPath = getImgPath(`/users/${req.body.cover.img}`);
+
+    req.body.cover.color = (await colorThief.getColor(imgPath)).join(',');
+    req.body.cover.img = await uploadImage(imgPath);
   }
   next();
 });
@@ -68,9 +76,10 @@ exports.saveTweetImage = catchAsync(async (req, res, next) => {
     .toFormat('jpeg')
     .toFile(`data/img/tweets/${req.file.filename}`);
 
-  req.file.color = (
-    await colorThief.getColor(getImgPath(`tweets/${req.file.filename}`))
-  ).join(',');
+  const imgPath = getImgPath(`tweets/${req.file.filename}`);
+
+  req.file.color = (await colorThief.getColor(imgPath)).join(',');
+  req.file.filename = await uploadImage(imgPath);
 
   next();
 });

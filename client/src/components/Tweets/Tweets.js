@@ -40,10 +40,10 @@ export const Tweets = (props) => {
         tweets.map((tweet) => (
           <Tweet
             key={tweet._id}
-            profile={`/img/users/${tweet.user.photo.img}`}
+            profile={tweet.user.photo.img}
             name={tweet.user.name}
             username={tweet.user.username}
-            img={tweet.image && `/img/tweets/${tweet.image}?size=small`}
+            img={tweet.image && tweet.image}
             color={tweet.color}
           >
             {tweet.content}

@@ -72,12 +72,9 @@ export const Tweet = (props) => {
           {props.img && (
             <Link
               to={{
-                pathname: `/photo/${props.img
-                  .split('/')
-                  .pop()
-                  .replace('?size=small', '')}`,
+                pathname: `/photo/${props.img}`,
                 state: {
-                  img: props.img.replace('?size=small', '?size=large'),
+                  img: props.img,
                   color: props.color,
                 },
               }}

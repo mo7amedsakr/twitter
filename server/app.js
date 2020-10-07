@@ -11,7 +11,7 @@ const cors = require('cors');
 const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routes/userRoutes');
 const tweetRouter = require('./routes/tweetRoutes');
-const imageRouter = require('./routes/imageRoutes');
+// const imageRouter = require('./routes/imageRoutes');
 
 const app = express();
 
@@ -23,12 +23,17 @@ app.enable('trust proxy');
 
 // Implement CORS
 if (process.env.NODE_ENV === 'development') {
-  app.use(cors({ origin: process.env.URL, credentials: true }));
+  app.use(
+    cors({
+      origin: process.env.URL.replace('http', 'https'),
+      credentials: true
+    })
+  );
+  app.options(process.env.URL, cors());
 } else {
   app.use(cors({ credentials: true }));
+  app.options('*', cors());
 }
-
-app.options('*', cors());
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'build')));
@@ -72,7 +77,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/tweets', tweetRouter);
-app.use('/img', imageRouter);
+// app.use('/img', imageRouter);
 
 app.all('*', (req, res, next) => {
   res.sendFile(`${__dirname}/build/index.html`);

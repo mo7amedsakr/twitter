@@ -48,7 +48,7 @@ const NavigationModal = (props) => {
             <div className={classes.Modal_Accounts_Pics}>
               <img
                 className={classes.Modal_Accounts_Pics_Pic}
-                src={`/img/users/${user.photo.img}`}
+                src={user.photo.img}
                 alt=""
               />
             </div>

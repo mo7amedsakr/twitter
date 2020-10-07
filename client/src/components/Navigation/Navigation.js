@@ -77,11 +77,7 @@ const Navigation = () => {
           to={`/${user.username}`}
           selected={pathname === `/${user.username}`}
         >
-          <Img
-            src={`/img/users/${user.photo.img}`}
-            alt=""
-            selected={pathname === '/profile'}
-          />
+          <Img src={user.photo.img} alt="" selected={pathname === '/profile'} />
         </Item>
         <Li>
           <button

@@ -38,7 +38,7 @@ const PostTweet = () => {
   return (
     <div className={[classes.PostTweet, classes.Responsive].join(' ')}>
       <div className={classes.PostTweet_Img}>
-        <img src={`/img/users/${user.photo.img}`} alt="" />
+        <img src={user.photo.img} alt="" />
       </div>
       <div className={classes.PostTweet_Inputs}>
         <TextArea

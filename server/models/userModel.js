@@ -29,7 +29,8 @@ const userSchema = new mongoose.Schema({
   photo: {
     img: {
       type: String,
-      default: 'default.jpg'
+      default:
+        'https://res.cloudinary.com/mo7amedsakr/image/upload/v1602023238/default_sif6sh.jpg'
     },
     color: String
   },

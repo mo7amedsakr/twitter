@@ -16,8 +16,8 @@ const createSendToken = (user, statusCode, req, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true
-    // secure: req.secure || req.headers('x-forwarded-proto') === 'https'
+    httpOnly: true,
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
   };
 
   res.cookie('jwt', token, cookieOptions);
@@ -70,6 +70,7 @@ exports.logout = (req, res) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
+  console.log(req.cookies.jwt);
   if (req.cookies.jwt) {
     token = req.cookies.jwt;
   } else {

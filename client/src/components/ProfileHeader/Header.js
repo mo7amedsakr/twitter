@@ -16,28 +16,28 @@ export const Header = (props) => {
           to={{
             pathname: `/photo/${props.cover.img}`,
             state: {
-              img: `/img/users/${props.cover.img}`,
+              img: props.cover.img,
               color: props.cover.color,
             },
           }}
           className={classes.Header_Cover}
         >
-          <img src={`/img/users/${props.cover.img}`} alt="" />
+          <img src={props.cover.img} alt="" />
         </Link>
       ) : (
         <Label style={{ height: '10rem' }} as="div" />
       )}
       <StyledLink
         to={{
-          pathname: `/photo/sakrphoto`,
+          pathname: `/photo/${props.photo.img}`,
           state: {
-            img: `/img/users/${props.photo.img}`,
+            img: props.photo.img,
             color: props.photo.color,
           },
         }}
         className={classes.Header_Photo}
       >
-        <img src={`/img/users/${props.photo.img}`} alt="" />
+        <img src={props.photo.img} alt="" />
       </StyledLink>
     </div>
   );
